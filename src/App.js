@@ -28,9 +28,8 @@ export default function App() {
   const [isImgEditorShown, setIsImgEditorShown] = useState(false);
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
-  var canvasRef = React.useRef(null);
   const [open, setOpen] = useState(false);
-  const [editedImageObjectState, setEditedImageObject] = useState(false);
+  const [editedImageObjectState, setEditedImageObject] = useState(null);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -67,7 +66,7 @@ export default function App() {
           fill: "#ff0000",
         }}
         Text={{ text: "Type text here" }}
-        tabsIds={[TABS.ADJUST, TABS.ANNOTATE]} // or {['Adjust', 'Annotate', 'Watermark']}
+        tabsIds={[TABS.ANNOTATE]} // or {['Adjust', 'Annotate', 'Watermark']}
         defaultTabId={TABS.ANNOTATE} // or 'Annotate'
         defaultToolId={TOOLS.TEXT} // or 'Text'
       />
@@ -116,7 +115,7 @@ export default function App() {
               variant="outlined"
               type="button"
               sx={{ marginRight: "10px" }}
-              onClick={handleClose()}
+              onClick={() => handleClose()}
             >
               Cancel
             </Button>
